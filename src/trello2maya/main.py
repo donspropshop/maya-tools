@@ -325,7 +325,7 @@ def delete_card(boards_ui, lists_ui, cards_ui, card_details_ui):
     card_ids = cmds.textScrollList(cards_ui[LIST_KEY], query=True, selectUniqueTagItem=True)
 
     if card_ids:
-        cards.delete(API_TOKEN, card_ids[0])
+        cards.archive(API_TOKEN, card_ids[0])
         cmds.textScrollList(cards_ui[LIST_KEY], edit=True, removeAll=True)
         reload_cards(boards_ui, lists_ui, cards_ui, card_details_ui)
 

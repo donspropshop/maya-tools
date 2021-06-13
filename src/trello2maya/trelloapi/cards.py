@@ -64,6 +64,17 @@ def move(token, card_id, list_id):
     with urlopen(request) as response:
         return loads(response.read())
 
+def archive(token, card_id):
+    params = {
+        'key': API_KEY,
+        'token': token,
+        'closed': 'true' }
+
+    request = Request(f'{CARDS_URL}{card_id}?{urlencode(params)}', method='PUT')
+
+    with urlopen(request) as response:
+        return loads(response.read())
+
 def add_comment(token, card_id, comment):
     params = {
         'key': API_KEY,
